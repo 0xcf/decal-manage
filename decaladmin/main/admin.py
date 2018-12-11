@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from .models import Semester, Facilitator, Student, Assignment, Checkoff
 
-for model in (Semester,):
-    admin.site.register(model)
+from .models import Semester, Facilitator, Student, Assignment, Checkoff, Attendance
 
-    
+admin.site.register(Semester)
+
+
 @admin.register(Facilitator)
 class FacilitatorAdmin(admin.ModelAdmin):
     list_display = ('username', 'semester')
@@ -13,7 +13,7 @@ class FacilitatorAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('username', 'track', 'semester')
+    list_display = ('username', 'sid', 'track', 'semester')
 
 
 @admin.register(Assignment)
@@ -23,4 +23,9 @@ class AssignmentAdmin(admin.ModelAdmin):
 
 @admin.register(Checkoff)
 class CheckoffAdmin(admin.ModelAdmin):
-    list_display = ('semester', 'assignment', 'student', 'facilitator', 'timestamp')
+    list_display = ('assignment', 'student', 'facilitator', 'timestamp')
+
+
+@admin.register(Attendance)
+class AttendanceAdmin(admin.ModelAdmin):
+    list_display = ('student', 'date', 'semester')

@@ -1,0 +1,13 @@
+{% load mathfilters %}
+{{ semester }}
+
+Advanced Students:
+username         labs attendance result
+{% for s in advanced_students %}
+{{ s|ljust:"16" }} {% filter ljust:"5" %}{{ s.checkoffs.count }}/{{ advanced_labs_required.count }}{% endfilter %}{% filter ljust:"10" %}{{ s.attendance.count }}/{{ advanced_labs.count }}{% endfilter %} {% if advanced_labs_required.count|sub:s.checkoffs.count > 2 and advanced_labs.count|sub:s.attendance.count > 2 %}Not {% endif%}Passing
+{% endfor %}
+
+Beginner Students:
+{% for s in beginner_students %}
+{{ s|ljust:"16" }} {% filter ljust:"5" %}{{ s.checkoffs.count }}/{{ advanced_labs_required.count }}{% endfilter %}{% filter ljust:"10" %}{{ s.attendance.count }}/{{ advanced_labs.count }}{% endfilter %} {% if advanced_labs_required.count|sub:s.checkoffs.count > 2 and advanced_labs.count|sub:s.attendance.count > 2 %}Not {% endif%}Passing
+{% endfor %}

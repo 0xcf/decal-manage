@@ -1,4 +1,5 @@
 {{ student.username }}
+{% if not passing %}Not {% endif %}Passing
 {% if checkoffs %}
 {% for checkoff in checkoffs %}
 {{ checkoff.assignment.slug }} at {{ checkoff.timestamp|date:"Y-m-d P" }} by {{ checkoff.facilitator }}

@@ -25,3 +25,7 @@ cook-image: Dockerfile
 .PHONY: docker-dev
 docker-dev: Dockerfile cook-image
 	docker run --rm -it -p 8000:8000 -v "$$(pwd)"/decaladmin:/opt/decal/decaladmin decaladmin
+
+.PHONY: shell
+shell:
+	$(PYTHON) ./manage.py shell
