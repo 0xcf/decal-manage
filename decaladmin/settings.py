@@ -135,3 +135,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CURRENT_SEMESTER = site_settings.get('decal', 'current_semester')

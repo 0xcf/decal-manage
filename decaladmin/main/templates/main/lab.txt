@@ -1,0 +1,8 @@
+{{ lab.slug }} 
+{% if checkoffs %}
+{% for checkoff in checkoffs %}
+{{ checkoff.student.username }} at {{ checkoff.timestamp|date:"Y-m-d P" }} by {{ checkoff.facilitator }}
+{% endfor %}
+{% else %}
+No checkoffs to display.
+{% endif %}
