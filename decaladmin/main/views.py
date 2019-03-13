@@ -34,7 +34,7 @@ def index(request):
         'beginner_students': semfilter(Student, track='beginner'),
     }
 
-    return render(request, 'main/index.txt', ctx)
+    return render(request, 'main/index.txt', ctx, 'text/plain')
 
 
 def lab(request, lab):
@@ -43,7 +43,7 @@ def lab(request, lab):
         'lab': req_lab,
         'checkoffs': req_lab.checkoffs.all(),
     }
-    
+
     return render(request, 'main/lab.txt', ctx)
 
 
@@ -52,11 +52,11 @@ def student(request, student):
     track = req_student.track
     all_assignments = current_semester.assignments.filter(track=track)
     checkoffs = req_student.checkoffs.all()
-        
+
     ctx = {
         'student': req_student,
         'checkoffs': checkoffs,
         'passing': checkoffs.count() >= all_assignments.count() - 2
     }
 
-    return render(request, 'main/student.txt', ctx)
+    return render(request, 'main/student.txt', ctx, 'text/plain')
