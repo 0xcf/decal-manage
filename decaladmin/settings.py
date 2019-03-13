@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': site_settings.get('database', 'database'),
         'USER': site_settings.get('database', 'username'),
         'PASSWORD': site_settings.get('database', 'password'),
-        'HOST': 'mysql.ocf.berkeley.edu',
+        'HOST': site_settings.get('database', 'host'),
     }
 }
 

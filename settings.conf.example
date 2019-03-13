@@ -1,0 +1,8 @@
+[database]
+host: mysql.ocf.berkeley.edu
+database: decal
+username: decal
+password: thisisnotthepassword
+
+[decal]
+current_semester: Spring 2019

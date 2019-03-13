@@ -4,7 +4,13 @@ from django.http import HttpResponse
 from .models import Semester, Student, Facilitator, Assignment, Checkoff
 from decaladmin.settings import CURRENT_SEMESTER
 
-current_semester = Semester.objects.get(name=CURRENT_SEMESTER)
+try:
+    current_semester = Semester.objects.get(name=CURRENT_SEMESTER)
+except:
+    # The semester hasn't been created or migrations haven't been run.
+    # Just ignore, so that the rest of the app can at least load.
+    print("Can't load the current semester!")
+    pass
 
 
 def semfilter(obj, **kwargs):
